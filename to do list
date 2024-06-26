@@ -1,0 +1,44 @@
+todo_list = []
+def add_task():
+    task_name = input("Enter task name:")
+    todo_list.append([task_name, False])
+    print(f"Task '{task_name}' added to the list!")
+
+def mark_completed():
+    task_name = input("Enter task name to mark as completed:")
+    for task in todo_list:
+        if task[0] == task_name:
+            task[1] = True
+            print(f"Task '{task_name}' marked as completed!")
+            return
+    print(f"Task '{task_name}' not found in the list!")
+
+def view_list():
+    print("Current To-Do List is:")
+    for task in todo_list:
+        status = "Completed" if task[1] else "Not completed"
+        print(f"  - {task[0]} ({status})")
+
+def main():
+    while True:
+        print("To-Do List Manager")
+        print("1. Add Task")
+        print("2. Mark Task as Completed")
+        print("3. View To-Do List")
+        print("4. Exit")
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            add_task()
+        elif choice == "2":
+            mark_completed()
+        elif choice == "3":
+            view_list()
+        elif choice == "4":
+            print("Stop")
+            break
+        else:
+            print("Invalid option. Try again!")
+
+if __name__ == "__main__":
+    main()
